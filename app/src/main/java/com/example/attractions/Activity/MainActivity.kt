@@ -1,42 +1,41 @@
 package com.example.attractions.Activity
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.attractions.R
+import com.example.attractions.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationBarItemView
 import com.google.android.material.navigation.NavigationBarView
 import javax.net.ssl.HttpsURLConnection
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
-class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class MainActivity : AppCompatActivity(){
+    private lateinit var binding:ActivityMainBinding
+            override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         SSLHandler()
+        initView()
     }
 
+   fun initView(){
 
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-
-        when(item.itemId){
-
-            R.id.nav_attr->{
-
-            }
-
-            R.id.nav_theme->{
-                
-            }
-
-        }
-
-        return true
+       binding.navigation.itemTextColor = ColorStateList.valueOf(Color.BLACK)
+       binding.navigation.setupWithNavController(findNavController(R.id.main_fragment))
     }
-
 
     fun SSLHandler(){
 

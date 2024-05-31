@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.attractions.R
+import com.example.attractions.databinding.FragAttractionBinding
 import com.example.attractions.viewModel.VMFragMain
-import com.example.attractions.databinding.FragMainBinding
 
 class FragmentAttraction:BaseFragment() {
-    private lateinit var binding: FragMainBinding
+    private lateinit var binding: FragAttractionBinding
     private lateinit var vm: VMFragMain
 
     override fun onCreateView(
@@ -31,6 +31,6 @@ class FragmentAttraction:BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vm.title.postValue("testVM")
+        vm.title.postValue("Attr")
     }
 }
