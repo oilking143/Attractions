@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ten">10dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_normal_txt">26dp</dimen>
+    <dimen name="padding_ten">10dp</dimen>
+    <dimen name="profile_padding">20dp</dimen>
+    <dimen name="margin_thirty">30dp</dimen>
+    <dimen name="txt_large">24sp</dimen>
+    <dimen name="txt_more">20sp</dimen>
+    <dimen name="txt_normal">18sp</dimen>
+    <dimen name="txt_medium">14sp</dimen>
+    <dimen name="txt_small">12sp</dimen>
+    <dimen name="six">6dp</dimen>
+    <dimen name="eight">8dp</dimen>
+    <dimen name="trade_space">23dp</dimen>
+    <dimen name="forty">40dp</dimen>
+</resources>
