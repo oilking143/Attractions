@@ -18,12 +18,12 @@ import javax.net.ssl.TrustManager
 import javax.net.ssl.TrustManagerFactory
 import javax.net.ssl.X509TrustManager
 
-class RetrofitManager {
+class RetrofitManager(catalog:String) {
 
 
 
     val httpLoggingInterceptor = HttpLoggingInterceptor()
-    private val retrofit: Retrofit
+    private val baseUrl = "https://www.travel.taipei/open-api/$catalog/"
 
 
 
@@ -40,7 +40,15 @@ class RetrofitManager {
                 ConnectionPool(32, 5, TimeUnit.MINUTES)
             ).build()
 
-    private val baseUrl = "https://www.travel.taipei/open-api/"
+    fun getRetrofit(): Retrofit {
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
+
+    }
 
     @Throws(NoSuchAlgorithmException::class, KeyManagementException::class)
     fun getSSLSocketFactory(): SSLSocketFactory {
@@ -65,6 +73,8 @@ class RetrofitManager {
         return arrayOf(trustManager)
     }
 
+
+
     @Throws(Exception::class)
     fun getX509TrustManager(): X509TrustManager {
         var trustManager: TrustManager? = null
@@ -76,22 +86,5 @@ class RetrofitManager {
             throw IllegalStateException("Unexpected default trust managers: $trustManagers")
         }
         return trustManagers[0] as X509TrustManager
-    }
-
-    init {
-
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        retrofit = Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
-            .build()
-
-    }
-
-    companion object {
-        private val manager = RetrofitManager()
-        val client: Retrofit
-            get() = manager.retrofit
     }
 }
