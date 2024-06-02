@@ -16,15 +16,31 @@
         android:background="@color/white"
         >
 
+        <com.example.loadinganimation.LoadingAnimation
+            android:id="@+id/loadingAnim"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:elevation="10dp"
+            app:barType="@drawable/fidget"
+            app:boldText="false"
+            android:background="@color/white"
+            app:enlarge="5"
+            app:textColor="@color/cardview_shadow_start_color"
+            app:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/loading_txt"
+            />
+
         <TextView
-            android:layout_width="80dp"
-            android:layout_height="20dp"
+            android:id="@+id/loading_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="尚在努力趕工中..."
+            android:textSize="@dimen/txt_normal"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@{vm.title}"
-            android:textColor="@color/black"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
 
 

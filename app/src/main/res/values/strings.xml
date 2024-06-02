@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Attractions</string>
+    <string name="zhtw">中文(繁體)</string>
+    <string name="zhcn">中文(简体)</string>
+    <string name="en">english</string>
+    <string name="ja">日本語</string>
+    <string name="ko">한국어</string>
+    <string name="es">español</string>
+    <string name="id">bahasa Indonesia</string>
+    <string name="th">แบบไทย</string>
+    <string name="vi">Tiếng Việt</string>
 </resources>

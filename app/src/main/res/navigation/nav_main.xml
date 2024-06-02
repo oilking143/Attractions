@@ -2,13 +2,38 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_main"
-    app:startDestination="@id/fragmentAttraction">
+    app:startDestination="@+id/fragmentAttraction">
     <fragment
         android:id="@+id/fragmentAttraction"
         android:name="com.example.attractions.Fragment.FragmentAttraction"
-        android:label="fragmentAttraction" />
+        android:label="fragmentAttraction" >
+        <action
+            android:id="@+id/action_fragmentAttraction_to_fragmentDetail"
+            app:destination="@id/fragmentDetail"/>
+
+
+    </fragment>
     <fragment
         android:id="@+id/fragmentTours"
         android:name="com.example.attractions.Fragment.FragmentTours"
         android:label="fragmentTours" />
+    <fragment
+        android:id="@+id/fragmentDetail"
+        android:name="com.example.attractions.Fragment.FragmentDetail"
+        android:label="FragmentDetail" >
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_fragmentDetail_to_fragWebView"
+            app:destination="@id/fragWebView" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragWebView"
+        android:name="com.example.attractions.Fragment.FragWebView"
+        android:label="FragWebView" >
+        <argument
+            android:name="url_name"
+            app:argType="string" />
+    </fragment>
 </navigation>
