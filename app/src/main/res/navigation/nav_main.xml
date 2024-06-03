@@ -35,5 +35,8 @@
         <argument
             android:name="url_name"
             app:argType="string" />
+        <argument
+            android:name="title_name"
+            app:argType="string" />
     </fragment>
 </navigation>

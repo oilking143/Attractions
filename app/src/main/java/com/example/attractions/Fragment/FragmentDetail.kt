@@ -62,7 +62,8 @@ class FragmentDetail:BaseFragment() {
                 }
 
                 21->{
-                    val action = FragmentDetailDirections.actionFragmentDetailToFragWebView(model.data[args.position].url)
+                    val action = FragmentDetailDirections.actionFragmentDetailToFragWebView(model.data[args.position].url
+                    ,model.data[args.position].name)
                     findNavController().navigate(action)
                     vm.status.postValue(0)
                 }

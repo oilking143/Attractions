@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.example.attractions.GlobalData
 import com.example.attractions.R
 import com.example.attractions.databinding.FragWebviewBinding
 import com.example.attractions.viewModel.VMFragMain
@@ -36,7 +37,7 @@ class FragWebView:BaseFragment() {
 
         binding.webview.apply {
            val webSettings = this.settings
-            webSettings.setJavaScriptEnabled(true) //開啟javascript功能
+            webSettings.javaScriptEnabled = true //開啟javascript功能
             this.webViewClient = WebViewClient() //新增瀏覽器客戶端
             this.loadUrl(args.urlName) //讀取url網站
         }
@@ -48,5 +49,9 @@ class FragWebView:BaseFragment() {
                 }
             }
         })
+
+        val model = GlobalData.getAttr()
+        binding.titleName.text=args.titleName
+
     }
 }
