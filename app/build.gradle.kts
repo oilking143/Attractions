@@ -58,8 +58,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1")
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1")
     //api
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")

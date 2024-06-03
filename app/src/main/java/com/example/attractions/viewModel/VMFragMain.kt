@@ -1,7 +1,6 @@
 package com.example.attractions.viewModel
 
 import android.app.Activity
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,9 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.attractions.Api.ApiServer
 import com.example.attractions.Api.RetrofitManager
 import com.example.attractions.Model.AttrModel.AttrModel
+import com.example.attractions.Model.ThemeModel.ThemeModel
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,6 +24,8 @@ class VMFragMain : ViewModel(){
     var status  = MutableLiveData<Int>()
     var detail  = MutableLiveData<Int>()
     var AttrData = MutableSharedFlow<AttrModel>()
+    var ThemeData = MutableSharedFlow<ThemeModel>()
+
     private val _data = MutableLiveData<AttrModel>()
     val data: LiveData<AttrModel>
         get() = _data
@@ -60,7 +60,7 @@ class VMFragMain : ViewModel(){
     }
 
     fun getAllAttractions(){
-        api.getAllAttractions("application/json",0.0,0.0,1).enqueue(object : Callback<AttrModel> {
+        api.getAllAttractions(0.0,0.0,1).enqueue(object : Callback<AttrModel> {
             override fun onResponse(call: Call<AttrModel>, response: Response<AttrModel>) {
                 viewModelScope.launch {
                     if(response.isSuccessful)
@@ -82,8 +82,27 @@ class VMFragMain : ViewModel(){
         })
     }
 
+    fun getAllTheme(){
+         api.getAllTheme(1).enqueue(object : Callback<ThemeModel> {
+             override fun onResponse(call: Call<ThemeModel>, response: Response<ThemeModel>) {
+                 viewModelScope.launch {
+                     val data: ThemeModel =response.body()!!
+                     ThemeData.emit(data)
+                 }
 
-    class VMFragMainC(act:Activity) : ViewModelProvider.NewInstanceFactory() {
+             }
+
+             override fun onFailure(call: Call<ThemeModel>, t: Throwable) {
+
+             }
+
+
+         })
+    }
+
+
+
+        class VMFragMainC(act:Activity) : ViewModelProvider.NewInstanceFactory() {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return VMFragMain() as T
         }

@@ -42,11 +42,12 @@ class RetrofitManager() {
         //日志显示级别
         val level: HttpLoggingInterceptor.Level = HttpLoggingInterceptor.Level.BODY
         //新建log拦截器
-        val loggingInterceptor = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-            override fun log(message: String) {
-                Log.d("Response", "OkHttp====Message:$message")
-            }
-        })
+        val loggingInterceptor = HttpLoggingInterceptor { message ->
+            Log.d(
+                "Response",
+                "OkHttp====Message:$message"
+            )
+        }
         loggingInterceptor.setLevel(level)
         //定制OkHttp
 
