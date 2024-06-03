@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="140dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
@@ -18,11 +18,25 @@
         android:layout_marginBottom="@dimen/padding_normal"
         />
 
+    <TextView
+        android:id="@+id/title_txt"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:textSize="@dimen/txt_normal"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/info_txt"
+        app:layout_constraintBottom_toTopOf="@+id/info_txt"
+        app:layout_constraintEnd_toEndOf="@+id/info_txt"
+        android:textStyle="bold"
+        />
+
+
+
       <TextView
           android:id="@+id/info_txt"
           android:layout_width="0dp"
           android:layout_height="0dp"
-          android:textSize="@dimen/txt_normal"
+          android:textSize="@dimen/txt_small"
           android:textColor="@color/black"
           app:layout_constraintTop_toTopOf="@+id/pic_item"
           app:layout_constraintBottom_toBottomOf="@+id/pic_item"

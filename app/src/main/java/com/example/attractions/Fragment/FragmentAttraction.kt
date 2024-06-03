@@ -121,6 +121,8 @@ class FragmentAttraction:BaseFragment(){
                 findNavController().navigate(action)
             }
 
+            holder.title.text = data.data[position].name
+
         }
 
         override fun getItemCount(): Int {
@@ -133,6 +135,7 @@ class FragmentAttraction:BaseFragment(){
             val picItem= binding.picItem
             val infoTxt = binding.infoTxt
             val toNext = binding.nextIcon
+            val title = binding.titleTxt
 
         }
 
