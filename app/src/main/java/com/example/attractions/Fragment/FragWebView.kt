@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebSettings
+import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -38,8 +40,29 @@ class FragWebView:BaseFragment() {
         binding.webview.apply {
            val webSettings = this.settings
             webSettings.javaScriptEnabled = true //開啟javascript功能
-            this.webViewClient = WebViewClient() //新增瀏覽器客戶端
+            webSettings.javaScriptEnabled = true
+            webSettings.useWideViewPort = true
+            webSettings.loadWithOverviewMode = true
+
+            webSettings.setSupportZoom(true)
+            webSettings.builtInZoomControls = true
+            webSettings.displayZoomControls = false
+
+            webSettings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
+            webSettings.allowFileAccess = true
+            webSettings.javaScriptCanOpenWindowsAutomatically = true
+            webSettings.loadsImagesAutomatically = true
+            webSettings.defaultTextEncodingName = "utf-8"
+            webSettings.domStorageEnabled = true
             this.loadUrl(args.urlName) //讀取url網站
+            binding.webview.webViewClient = object : WebViewClient() {
+                override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                    if (url != null) {
+                        view?.loadUrl(url)
+                    }
+                    return true
+                }
+            }
         }
 
         vm.status.observe(viewLifecycleOwner, Observer { status ->
