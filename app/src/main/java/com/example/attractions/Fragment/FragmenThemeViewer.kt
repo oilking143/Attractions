@@ -1,10 +1,12 @@
 package com.example.attractions.Fragment
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,8 +19,8 @@ import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
-import com.example.attractions.GlobalData
 import com.example.attractions.Model.AttrModel.Image
+import com.example.attractions.Model.ThemeModel.Data
 import com.example.attractions.R
 import com.example.attractions.databinding.FragDetailBinding
 import com.example.attractions.viewModel.VMFragMain
@@ -27,7 +29,7 @@ import com.example.attractions.viewModel.VMFragMain
 class FragmenThemeViewer:BaseFragment() {
     private lateinit var vm: VMFragMain
     private lateinit var binding: FragDetailBinding
-    private val args: FragmenThemeViewerArgs by navArgs()
+    lateinit var themeData:Data
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,13 +44,14 @@ class FragmenThemeViewer:BaseFragment() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        themeData = requireArguments().getParcelable("themeModel", Data::class.java)!!
 
-        val model = args.
-        binding.descTxt.text = model.data[args.position].description
-        binding.urlContent.text = model.data[args.position].url
-        binding.titleName.text = model.data[args.position].title
+        binding.descTxt.text = themeData.description
+        binding.urlContent.text = themeData.url
+        binding.titleName.text = themeData.title
 
         vm.status.observe(viewLifecycleOwner, Observer { status ->
 
@@ -58,8 +61,8 @@ class FragmenThemeViewer:BaseFragment() {
                 }
 
                 21->{
-                    val action = FragmentDetailDirections.actionFragmentDetailToFragWebView(model.data[args.position].url
-                    ,model.data[args.position].title)
+                    val action = FragmentDetailDirections.actionFragmentDetailToFragWebView(themeData.url
+                    ,themeData.title)
                     findNavController().navigate(action)
                     vm.status.postValue(0)
                 }

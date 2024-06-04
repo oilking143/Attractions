@@ -86,9 +86,12 @@ class FragmentTours:BaseFragment() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             holder.infoTxt.text = data.data[position].description
             holder.titleTxt.text = data.data[position].title
-
+            val bundle = Bundle()
+            bundle.putParcelable("themeModel",data.data[position])
             holder.nextIcon.setOnClickListener {
-                val action = FragmentToursDirections.actionFragmentToursToFragmenThemeViewer(data)
+                val fragment = FragmenThemeViewer()
+                fragment.arguments = bundle
+                val action = FragmentToursDirections.actionFragmentToursToFragmenThemeViewer()
                 findNavController().navigate(action)
             }
         }

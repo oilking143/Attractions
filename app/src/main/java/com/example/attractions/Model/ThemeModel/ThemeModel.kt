@@ -1,10 +1,12 @@
 package com.example.attractions.Model.ThemeModel
 
 import android.os.Parcelable
-import java.io.Serializable
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
 
+@Parcelize
 data class ThemeModel(
-    val data: List<Data>,
+    val data: @RawValue List<Data>,
     val total: Int
-): Serializable
+) : Parcelable

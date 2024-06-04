@@ -47,7 +47,5 @@
         android:id="@+id/fragmenThemeViewer"
         android:name="com.example.attractions.Fragment.FragmenThemeViewer"
         android:label="FragmenThemeViewer" >
-        <argument name="model"
-            app:argType="com.example.attractions.Model.ThemeModel.ThemeModel"/>
     </fragment>
 </navigation>
