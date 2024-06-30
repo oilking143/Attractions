@@ -19,10 +19,8 @@ import retrofit2.Retrofit
 
 class VMFragMain : ViewModel(){
 
-    var title = MutableLiveData<String>()
 
     var status  = MutableLiveData<Int>()
-    var detail  = MutableLiveData<Int>()
     var AttrData = MutableSharedFlow<AttrModel>()
     var ThemeData = MutableSharedFlow<ThemeModel>()
 
@@ -39,9 +37,6 @@ class VMFragMain : ViewModel(){
     }
 
 
-    fun setData(model: AttrModel) {
-        _data.value = model
-    }
 
     fun callDialog(){
         status.postValue(2)
