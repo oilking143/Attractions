@@ -70,13 +70,14 @@ class VMFragMain : ViewModel(){
                     }
                     else{
 
+                        status.postValue(999)
                     }
                 }
 
             }
 
             override fun onFailure(call: Call<AttrModel>, t: Throwable) {
-
+                status.postValue(998)
             }
 
         })
