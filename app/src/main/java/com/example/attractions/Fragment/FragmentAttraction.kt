@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -62,6 +63,15 @@ class FragmentAttraction:BaseFragment(){
                     binding.loadingAnim.visibility = View.VISIBLE
                     getLang(requireActivity())?.let { vm.setRetroFit(it) }
                     vm.getAllAttractions()
+                }
+
+                999->{
+                    Toast.makeText(requireContext(),R.string.fail,Toast.LENGTH_LONG).show()
+
+                }
+
+                998->{
+                    Toast.makeText(requireContext(),R.string.error,Toast.LENGTH_LONG).show()
                 }
 
             }

@@ -9,4 +9,7 @@
     <string name="id">bahasa Indonesia</string>
     <string name="th">แบบไทย</string>
     <string name="vi">Tiếng Việt</string>
+    <string name="fail">發送資料錯誤，請通知相關人員</string>
+    <string name="error">目前後台無法接通，請通知相關人員</string>
+
 </resources>
